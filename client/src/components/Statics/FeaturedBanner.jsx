@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import api from "../../utils/api";
 

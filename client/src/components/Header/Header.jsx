@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "./Sidebar";
 import { useAuth } from "../../context/AuthContext";
@@ -9,7 +9,7 @@ function Header() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+  
 
   const handleLogout = () => {
     logout();

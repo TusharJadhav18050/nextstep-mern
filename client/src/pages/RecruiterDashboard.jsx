@@ -25,13 +25,13 @@ export default function RecruiterDashboard() {
   const [downloading,  setDownloading]  = useState(null);
 
   useEffect(() => {
-    if (!user || user.role !== "recruiter") {
-      toast.error("Access denied! Recruiters only.");
-      navigate("/");
-      return;
-    }
-    fetchAll();
-  }, [user]);
+  if (!user || user.role !== "recruiter") {
+    toast.error("Access denied! Recruiters only.");
+    navigate("/");
+    return;
+  }
+  fetchAll();
+}, [user, navigate]); 
 
   const fetchAll = async () => {
     try {

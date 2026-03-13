@@ -28,7 +28,7 @@ export default function SeekerDashboard() {
       .then(r => setApplications(r.data.applications))
       .catch(() => toast.error("Failed to load applications"))
       .finally(() => setLoading(false));
-  }, [user]);
+  }, [user,navigate]);
 
   const scoreColor = (score) => {
     if (score >= 70) return "#16a34a";
