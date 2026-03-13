@@ -57,13 +57,20 @@ const handleUpload = async () => {
   const fakeProgress = setInterval(() => setProgress(p => p < 85 ? p + 5 : p), 120);
 
   try {
-    const token = localStorage.getItem("nextstep_token");
-    const url = `/api/resume/analyze${jobSlug ? `?job_slug=${jobSlug}` : ""}`;
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: formData,
-    });
+
+    
+  const token = localStorage.getItem("nextstep_token");
+const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const res = await fetch(
+  `${baseUrl}/resume/analyze${jobSlug ? `?job_slug=${jobSlug}` : ""}`,
+  {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  }
+);
+
+    
     clearInterval(fakeProgress); setProgress(100);
 
     if (!res.ok) { const d = await res.json(); throw new Error(d.message || "Analysis failed"); }

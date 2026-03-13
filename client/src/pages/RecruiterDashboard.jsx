@@ -66,10 +66,10 @@ export default function RecruiterDashboard() {
   try {
     setDownloading(appId);
     const token = localStorage.getItem("nextstep_token");
-    const response = await fetch(
-      `http://localhost:5000/api/resume/download/${appId}`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+  const response = await fetch(
+  `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}/resume/download/${appId}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
 
     if (!response.ok) {
       const err = await response.json();
