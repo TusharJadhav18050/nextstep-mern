@@ -163,7 +163,7 @@ export default function RecruiterDashboard() {
               {filteredApps.map((app, idx) => {
                 const badge  = rankBadge(idx);
                 const sColor = statusColors[app.status] || statusColors.applied;
-                const isDownloading = downloading === app._id;
+          
 
                 return (
                   <div key={app._id} style={{ background: "#fff", borderRadius: 10, padding: 20, boxShadow: "0 2px 8px rgba(0,0,0,0.06)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
