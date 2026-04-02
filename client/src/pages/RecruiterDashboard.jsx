@@ -22,7 +22,7 @@ export default function RecruiterDashboard() {
   const [loading,      setLoading]      = useState(true);
   const [activeTab,    setActiveTab]    = useState("applicants");
   const [selectedJob,  setSelectedJob]  = useState("all");
-  const [downloading,  setDownloading]  = useState(null);
+  
 
   useEffect(() => {
   if (!user || user.role !== "recruiter") {
@@ -239,27 +239,7 @@ export default function RecruiterDashboard() {
                         <option value="rejected">Rejected</option>
                       </select>
 
-                      {/* Download Resume Button */}
-                      {app.resumeFile ? (
-                        <button
-                          onClick={() => downloadResume(app._id, app.applicant?.name || "candidate")}
-                          disabled={isDownloading}
-                          style={{
-                            display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-                            background: isDownloading ? "#9ca3af" : "#16a34a",
-                            color: "#fff", border: "none", padding: "7px 12px",
-                            borderRadius: 6, fontSize: 12, fontWeight: 600,
-                            cursor: isDownloading ? "not-allowed" : "pointer",
-                            transition: "background 0.2s"
-                          }}>
-                          <FaDownload size={11} />
-                          {isDownloading ? "Downloading..." : "Download Resume"}
-                        </button>
-                      ) : (
-                        <div style={{ fontSize: 11, color: "#9ca3af", textAlign: "center", padding: "4px 0" }}>
-                          No resume file
-                        </div>
-                      )}
+                
                     </div>
 
                   </div>
