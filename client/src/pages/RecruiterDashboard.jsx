@@ -62,36 +62,7 @@ export default function RecruiterDashboard() {
     }
   };
 
- const downloadResume = async (appId, candidateName) => {
-  try {
-    setDownloading(appId);
-    const token = localStorage.getItem("nextstep_token");
-  const response = await fetch(
-  `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}/resume/download/${appId}`,
-  { headers: { Authorization: `Bearer ${token}` } }
-);
 
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.message || "Download failed");
-    }
-
-    const blob = await response.blob();
-    const url  = window.URL.createObjectURL(blob);
-    const a    = document.createElement("a");
-    a.href     = url;
-    a.download = `${candidateName.replace(/\s+/g, "_")}_resume.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    window.URL.revokeObjectURL(url);
-    toast.success("Resume downloaded!");
-  } catch (err) {
-    toast.error(err.message || "Could not download resume");
-  } finally {
-    setDownloading(null);
-  }
-};
   const filteredApps = selectedJob === "all"
     ? applications
     : applications.filter(a => a.job?._id === selectedJob);
