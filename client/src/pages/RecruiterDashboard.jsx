@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaStar, FaUserTie, FaBriefcase, FaBuilding, FaDownload } from "react-icons/fa";
+import { FaStar, FaUserTie, FaBriefcase, FaBuilding } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import toast from "react-hot-toast";
 import api from "../utils/api";
